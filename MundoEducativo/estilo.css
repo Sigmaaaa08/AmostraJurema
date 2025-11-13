@@ -115,7 +115,7 @@ p{
         }
 
         .thumbnail.active {
-            border-color: #ff4444;
+            border-color: #414141;
         }
 
         /* Informações do Produto */
@@ -207,11 +207,11 @@ p{
         }
 
         .favorite-btn:hover {
-            color: #ff4444;
+            color: #414141;
         }
 
         .favorite-btn.active {
-            color: #ff4444;
+            color: #414141;
         }
 
         .favorite-btn svg {
@@ -282,9 +282,9 @@ p{
         }
 
         .btn-cart {
-            border: 2px solid #ff4444;
+            border: 2px solid #414141;
             background-color: white;
-            color: #ff4444;
+            color: #414141;
         }
 
         .btn-cart:hover {
@@ -292,12 +292,12 @@ p{
         }
 
         .btn-buy {
-            background-color: #ff4444;
+            background-color: #414141;
             color: white;
         }
 
         .btn-buy:hover {
-            background-color: #dd3333;
+            background-color: #414141;
         }
 
         .btn svg {
