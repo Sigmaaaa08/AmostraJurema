@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="imagens/favicon.ico" />
+
+  <title>Quiz de Matemática - Ensino Médio</title>
+  
+  <!-- Adiciona MathJax para renderizar equações matemáticas -->
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <style>
+  
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      height: auto;
+      width: auto;
+      background-color: #996699;
+      border-radius: 10px; /* Alterado de 50% para 10px */
+      display: inline-block;
+      border: 3px solid #993300;
+      padding: 10px 20px;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .opcoes { /* Alterado de .imagens para .opcoes */
+      display: flex;
+      flex-direction: column; /* Opções em coluna */
+      justify-content: center;
+      gap: 10px; /* Espaçamento menor */
+      margin-top: 20px;
+      width: 80%; /* Largura para as opções */
+      max-width: 600px;
+    }
+
+    .opcao-btn { /* Novo estilo para botões de opção */
+      background-color: #f0f0f0;
+      color: #333;
+      padding: 15px;
+      font-size: 1.1em;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+      text-align: left;
+    }
+
+    .opcao-btn:hover:not(:disabled) {
+      background-color: #ddd;
+      border-color: #007BFF;
+    }
+
+    .opcao-btn:disabled {
+        cursor: not-allowed;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #555;
+    }
+
+    #pontuacao {
+      margin-top: 10px;
+      font-size: 1em;
+      color: #333;
+    }
+
+    a{
+      text-decoration: none;
+      color: black;
+    
+    }
+    button {
+      background-color: #9a6600;
+      border: 4px solid #993100;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: transform 0.3s, border-color 0.3s;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      transform: scale(1.05); /* Ajustado para um efeito mais sutil */
+    }
+
+    #botao-proximo {
+      display: block;
+      margin: 20px auto;
+    }
+
+    #home {
+      background-color: #9a6600;
+      border: 4px solid #993100;
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: black;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    #home:hover {
+      background-color: #7e5100;
+    }
+
+    p {
+      color: blue;
+      font-size: 1.2em;
+    }
+
+  
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.2em;
+        padding: 8px 15px;
+      }
+
+      .opcoes {
+        width: 95%;
+      }
+     
+      #resultado, #pontuacao {
+        font-size: 1em;
+      }
+
+     
+      button {
+        font-size: 1em;
+        padding: 8px 15px;
+      }
+
+   
+      .opcoes {
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      
+      h1 {
+        font-size: 1.1em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+
+      .opcao-btn {
+        font-size: 1em;
+        padding: 10px;
+      }
+
+      button {
+        width: 100%;
+        font-size: 0.9em;
+      }
+    }
+    #mensagem{
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+
+  </style>
+</head>
+<body>
+  <h1 id="texto-pergunta">1.</h1>
+  <p id="pabens">Escolha a alternativa correta:</p>
+
+  <div class="opcoes">
+  
+  </div>
+
+  <div id="resultado"></div>
+  <div id="mensagem" style="display: none;"></div>
+  <div id="pontuacao">Pontuação: 0</div>
+  
+  <!-- Mantive os elementos de áudio, mas o usuário precisará fornecer os arquivos se quiser os sons -->
+  <audio id="acerto-som" src="sons/correct.mp3"></audio>
+  <audio id="erro-som" src="sons/incorrect.mp3"></audio>
+  <audio id="bom-som" src="sons/acerto.mp3"></audio>
+  <audio id="ruim-som" src="sons/erro.mp3"></audio>
+  
+  <button id="botao-proximo" style="display: none;" onclick="carregarProximaPergunta()">Próxima Questão</button>
+  <a href="index.html"><button id="home">Home</button></a>
+
+  <script src="quiz.js"></script>
+</body>
+</html>
