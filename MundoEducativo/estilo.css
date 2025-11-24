@@ -115,7 +115,7 @@ p{
         }
 
         .thumbnail.active {
-            border-color: #414141;
+            border-color: #414141 !important; 
         }
 
         /* Informações do Produto */
@@ -207,11 +207,11 @@ p{
         }
 
         .favorite-btn:hover {
-            color: #414141;
+            color: #414141 !important;
         }
 
         .favorite-btn.active {
-            color: #414141;
+            color: #414141 !important;
         }
 
         .favorite-btn svg {
@@ -282,9 +282,9 @@ p{
         }
 
         .btn-cart {
-            border: 2px solid #414141;
+            border: 2px solid #414141 !important;
             background-color: white;
-            color: #414141;
+            color: #414141 !important;
         }
 
         .btn-cart:hover {
@@ -292,12 +292,12 @@ p{
         }
 
         .btn-buy {
-            background-color: #414141;
+            background-color: #414141 !important;
             color: white;
         }
 
         .btn-buy:hover {
-            background-color: #414141;
+            background-color: #414141 !important;
         }
 
         .btn svg {
