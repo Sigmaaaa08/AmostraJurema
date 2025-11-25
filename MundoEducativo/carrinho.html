@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Educativo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+
+    <link rel="stylesheet" href="https://bulma.io/vendor/fontawesome-free-6.5.2-web/css/all.min.css">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.1.19/css/materialdesignicons.min.css">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+    <link rel="stylesheet" href="https://bulma.io/assets/css/website.min.css?v=202506271628">
+
+    <style>
+        p {
+            font-size: large;
+            font-weight: 900;
+        }
+
+        .card {
+            width: fit-content;
+            height: fit-content;
+            margin-left: 30%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body style="background-color: antiquewhite;"> <!--AAAAAAAAAAAAAAAAAaa  vcvca-->
+    <!--JUREMAAAAAAAAAAAAAAAAAAAAAAAAA-->
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">
+                <i class="fa-solid fa-gamepad fa-large"></i>
+                <p>JOGOS EDUCATIVOS</p>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="index.html">
+                    Home
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Mais
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="produto1.html">
+                            Produto 1
+                        </a>
+                        <a class="navbar-item" href="produto2.html">
+                            Produto 2
+                        </a>
+                        <a class="navbar-item is-selected" href="produto3.html">
+                            Produto 3
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+
+                    <div class="buttons">
+                        <i class="fa fa-shopping-cart fa-large" aria-hidden="true"></i>
+                        <a class="button is-primary">
+                            <strong>Cadastrar</strong>
+                        </a>
+                        <a class="button is-light">
+                            Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <hr>
+
+    <section class="section">
+
+        <h1 class="title">SEU CARRINHO <i class="fa fa-shopping-cart fa-large" aria-hidden="true"></i> </h1>
+        
+    </section>
+    <div class="container m-6">
+
+        <div>
+            <div class="card">
+                <div class="card-image">
+                    <figure>
+                        <img src="imagens/alfa0.png" alt="Placeholder image" />
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADbklEQVR4nO2aa4hNURSAv7nDMMkreTQ/+DEeJUwe8Yc8QiSShvJoSuQnJYn8kQh5hxBRpskzrwl1JyXUmB+DkldjjFcRUl4zxutq1/pxOu2975m5zZ1zzt1frT/3rL3PXuvss/Za61xwOBwOh8PhaD8SQE+LdCamFABHgUYglUY+A1eB+UAeMWFlAMN1ciUuu+JsKx2gZAsxIKkx7B9QL/IG+GNwwIc4vApJjWHNPp2BwEuDE3qRAw5QbNTo/QYKyREHVGj0zhMDkoYnO1VkAXBMo/MKKCKmDkhZ5AWwW5IjctEBb4HLwAxy1AEpj6idEEr6A3OBMmCSpLutDYIJOQbPGJywhBCRAPZJEPMu8jUwLcNTQDnxi0a3hhCx2bJdfwDDM3AA4ki/7ldCQh8x0vbOXsjAAbMtQTEUrA8QtP4CAwI4QOkdEVGl8g2pD3RzniIkPNIs7rHmtw2+cZUZnAKqSBpNCBilWdxTYJXm9ye+sVszMH4FIWGPZoH7gcGGxY/1xY5nLTT8mm+OdqUD8E6zUBW0FM8NzvHSCZgorS6TzAMmAF0JGTM1Bv4Cusn1A5rrn9IkR5GiQmPgTc/1WYatPIcY0AX4libSFxo6vueIAWWGp6sands8oosRP+NQ0iYzOMNTAY+xYmA1cAm4J43SB/J9QNUdU9qrMVpk6dYGlTuW+XsD5QHvcR8YR5ZZk6HxKUlv1RP2MxRoaOFczXJcZo27hoXcAqo0Um/QX+ubt4chdwgiKq6MzIbx+ZqaX8lH6QnoKDUs+rRP75DFwIfAcakfmg06t7NgP3mG5sRhy5juhuPwoEenL9Bk2SneYFds2Sn+irNN2Ou7qcoHBqUZs0OzZUs815cbDLpomK9Esk6/virO2pwEsBQ4IU9xRMC6YRlwUhw4zHe93OCA6ZY5N/l0G6S2iCTVBgf0s4zJk3xCpeS7pCEbWeoMkT3yX4CDojv7VWzJGWoNr4DKDWyMl1NicdT/NVJpcMAYy5iFvoZpbZR7DesMDthpyS3ea/RNH2FCT4nBAU2aHmC+tMR1+uqzemSpMhjVKIlUqRx71RY9tTOI8i5obGUxlJLEKPIsMhRb6aRSss1YMNnwMVQnqmmyHehIzCiQAuk68F1jeJ2kv7qmSuzIl3JZdYuGBEiOHA6Hw+FwOBwO0vMfWD21oYtbtGAAAAAASUVORK5CYII="
+                                    alt="abc">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">Alfabeto Educativo</p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        Jogo semelhante a um quebra cabeça, com figuras de coisas <br> com cada uma com a
+                        inicial de cada uma das letras do <br>alfabeto, na intenção de ajudar crianças <br> no
+                        desenvolvimento
+                        do conhecimento
+
+                        <br> <br>
+
+                        <a href="produto1.html"><button class="button is-dark"><strong>Visitar</strong></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/assets/images/placeholders/1280x960.png" alt="Placeholder image" />
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <i class="fa-solid fa-seedling"></i>
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">Colheita de Palavras</p>
+
+
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        Um jogo da memória desenvolvido especialmente para idosos. <br> Exercite sua mente e divirta-se
+                        <br>
+                        enquanto descobre pares de palavras e <br> imagens que remetem ao campo, à natureza e à
+                        sabedoria <br>
+                        do dia a dia.
+                        O ritmo calmo e o design acessível ajudam <br> a treinar a atenção e fortalecer a memória de
+                        <br>forma leve e prazerosa.
+                        <a>@colheitadepalavras</a>. <br> <a href="#">#jogosparaidosos</a> <a href="#">#memóriaativa</a>
+
+                        <br> <br>
+
+                        <a href="produto2.html"><button class="button is-dark"><strong>Visitar</strong></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/assets/images/placeholders/1280x960.png" alt="Placeholder image" />
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <i class="fa-solid fa-square-root-variable"></i>
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">Desafios dos Números</p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        Você consegue vencer esse desafio impossível...?! <br> Será que as aulas legais com os
+                        <br> professores incriveis de matemática valeram a pena?
+                        <br>teste seu conhecimento com esse quiz sobre matematica <br> dos ensinos medio e fundamental.
+                        <a>@desafiodosnumeros</a>. <br> <a href="#">#matematica</a> <br> <a href="#">#aprendizado</a> <a
+                            href="#">#jogoseducativos</a>
+
+                        <br> <br>
+
+                        <a href="produto3.html"><button class="button is-dark"><strong>Visitar</strong></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    </main>
+
+    <div class="footer" style="background-color: black !important;">
+        <footer class="">
+            <div class="content has-text-centered">
+                <p style="color: white !important;">
+                    Caio Picelli
+                    <br> João Lucas
+                    <br> Karen Luísa
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
