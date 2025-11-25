@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jogo da Memória: Colheita de Palavras</title>
+    <style>
+        :root {
+            --cor-fundo: #f1f8e9;
+            --cor-carta-fundo: #ffffff;
+            --cor-carta-verso: #388e3c;
+            --cor-texto: #333;
+            --cor-botao: #e64a19;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--cor-fundo);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #2e7d32;
+            font-size: 2.2rem;
+            margin: 0 0 15px 0;
+        }
+
+        .placar-topo {
+            font-size: 1.4rem;
+            color: #555;
+            background: white;
+            padding: 8px 25px;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            display: inline-block;
+        }
+
+        .tabuleiro {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 700px;
+            width: 100%;
+            perspective: 1000px;
+            margin: auto;
+        }
+
+        .carta {
+            background-color: transparent;
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .carta.virada {
+            transform: rotateY(180deg);
+            cursor: default;
+        }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            border: 3px solid #c8e6c9;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        .frente {
+            background-color: var(--cor-carta-fundo);
+            transform: rotateY(180deg);
+        }
+
+        .verso {
+            background-color: var(--cor-carta-verso);
+            color: white;
+            font-size: 3rem;
+            border-color: #2e7d32;
+        }
+
+        .carta.encontrada .frente {
+            background-color: #fff9c4;
+            border-color: #fdd835;
+            box-shadow: inset 0 0 15px #fff176;
+        }
+
+        .controles {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            background-color: var(--cor-botao);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            font-weight: bold;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        #mensagem-vitoria {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(241, 248, 233, 0.98);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #mensagem-vitoria h2 {
+            font-size: 2.8rem;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        #mensagem-vitoria p {
+            font-size: 1.6rem;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .tabuleiro {
+                gap: 10px;
+                max-width: 500px;
+            }
+            .face {
+                font-size: 3rem;
+                border-width: 2px;
+            }
+            .verso {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .placar-topo {
+                font-size: 1.2rem;
+                padding: 6px 20px;
+            }
+            .tabuleiro {
+                gap: 8px;
+            }
+            .face {
+                font-size: 2.5rem;
+            }
+            .verso {
+                font-size: 2rem;
+            }
+            button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🌾 Colheita de Palavras</h1>
+        <div class="placar-topo">Pares encontrados: <span id="pares-atual">0</span> / 8</div>
+    </header>
+
+    <div class="tabuleiro" id="tabuleiro"></div>
+
+    <div class="controles">
+        <button onclick="reiniciarJogo()">Recomeçar Jogo</button>
+    </div>
+
+    <div id="mensagem-vitoria">
+        <h2>🎉 Parabéns! 🎉</h2>
+        <p>Você realizou uma ótima colheita e encontrou todos os 8 pares!</p>
+        <button onclick="reiniciarJogo()">Jogar Novamente</button>
+    </div>
+
+    <script>
+        const itensFazenda = ['🐄', '🐖', '🚜', '🌽', '🐔', '🐑', '🍎', '🌳'];
+        let cartas = [];
+        let primeiraCarta = null;
+        let segundaCarta = null;
+        let bloqueioTabuleiro = false;
+        let paresEncontrados = 0;
+        const totalPares = itensFazenda.length;
+
+        const elementoTabuleiro = document.getElementById('tabuleiro');
+        const elementoPlacarAtual = document.getElementById('pares-atual');
+        const telaVitoria = document.getElementById('mensagem-vitoria');
+
+        function embaralhar(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function iniciarJogo() {
+            cartas = [...itensFazenda, ...itensFazenda];
+            cartas = embaralhar(cartas);
+
+            elementoTabuleiro.innerHTML = '';
+            primeiraCarta = null;
+            segundaCarta = null;
+            bloqueioTabuleiro = false;
+            paresEncontrados = 0;
+            elementoPlacarAtual.innerText = 0;
+            telaVitoria.style.display = 'none';
+
+            cartas.forEach((item) => {
+                const carta = document.createElement('div');
+                carta.classList.add('carta');
+                carta.dataset.icone = item;
+
+                const frente = document.createElement('div');
+                frente.classList.add('face', 'frente');
+                frente.innerText = item;
+
+                const verso = document.createElement('div');
+                verso.classList.add('face', 'verso');
+                verso.innerText = '❓';
+
+                carta.appendChild(frente);
+                carta.appendChild(verso);
+
+                carta.addEventListener('click', virarCarta);
+                elementoTabuleiro.appendChild(carta);
+            });
+        }
+
+        function virarCarta() {
+            if (bloqueioTabuleiro) return;
+            if (this === primeiraCarta) return;
+
+            this.classList.add('virada');
+
+            if (!primeiraCarta) {
+                primeiraCarta = this;
+                return;
+            }
+
+            segundaCarta = this;
+            checarPar();
+        }
+
+        function checarPar() {
+            let ehPar = primeiraCarta.dataset.icone === segundaCarta.dataset.icone;
+
+            if (ehPar) {
+                desativarCartas();
+            } else {
+                desvirarCartas();
+            }
+        }
+
+        function desativarCartas() {
+            primeiraCarta.classList.add('encontrada');
+            segundaCarta.classList.add('encontrada');
+            
+            primeiraCarta.removeEventListener('click', virarCarta);
+            segundaCarta.removeEventListener('click', virarCarta);
+
+            paresEncontrados++;
+            elementoPlacarAtual.innerText = paresEncontrados;
+
+            resetarTabuleiro();
+
+            if (paresEncontrados === totalPares) {
+                setTimeout(() => {
+                    mostrarVitoria();
+                }, 800);
+            }
+        }
+
+        function desvirarCartas() {
+            bloqueioTabuleiro = true;
+
+            setTimeout(() => {
+                primeiraCarta.classList.remove('virada');
+                segundaCarta.classList.remove('virada');
+                resetarTabuleiro();
+            }, 1500);
+        }
+
+        function resetarTabuleiro() {
+            [primeiraCarta, segundaCarta, bloqueioTabuleiro] = [null, null, false];
+        }
+
+        function mostrarVitoria() {
+            telaVitoria.style.display = 'flex';
+        }
+
+        function reiniciarJogo() {
+            iniciarJogo();
+        }
+
+        iniciarJogo();
+    </script>
+</body>
+</html>
